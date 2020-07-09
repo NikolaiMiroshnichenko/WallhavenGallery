@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewmodels="clr-namespace:WallhavenGallery.ViewModels"
+             mc:Ignorable="d"
+             x:Class="WallhavenGallery.MainPage">
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel x:Name="ViewModel"/>
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+
+        <Grid>
+            <Button Command="{Binding NatureCommand}"  Text="Nature" Grid.Column="0" Grid.Row="0"/>
+            <Button Command="{Binding SpaceCommand}" Text="Space" Grid.Column="1" Grid.Row="0" />
+            <Button Command="{Binding TransportCommand}" Text="Transport" Grid.Column="2" Grid.Row="0" />
+            <Button Command="{Binding GirlsCommand}" Text="Girls" Grid.Column="3" Grid.Row="0" />
+            <Button Command="{Binding AnimeCommand}"  Text="Anime" Grid.Column="4" Grid.Row="0" />
+            <Button Command="{Binding ArtsCommand}"  Text="Arts" Grid.Column="5" Grid.Row="0" />
+            <Button Command="{Binding AnimalCommand}"  Text="Animal" Grid.Column="0" Grid.Row="1" />
+            <Button Command="{Binding GamesCommand}"  Text="Games" Grid.Column="1" Grid.Row="1" />
+            <Button Command="{Binding MoviesCommand}" Text="Movies"  Grid.Column="2" Grid.Row="1" />
+            <Button Command="{Binding FantasyCommand}" Text="Fantasy" Grid.Column="3" Grid.Row="1" />
+            <Button Command="{Binding SportCommand}" Text="Sport" Grid.Column="4" Grid.Row="1" />
+            <Button Command="{Binding OtherCommand}" Text="Other" Grid.Column="5" Grid.Row="1" />
+            
+        </Grid>
+
+        <Editor Placeholder="Write tag here"/>
+
+        <Label Text="Welcome to Xamarin.Forms!" 
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
+        <CollectionView BackgroundColor="Red"
+                        ItemsSource ="{Binding GalleryList}">
+            
+        </CollectionView>
+        
+    </StackLayout>
+
+</ContentPage>
