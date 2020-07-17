@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using WallhavenGallery.Models;
 using Xamarin.Forms;
+using Newtonsoft.Json;
 
 namespace WallhavenGallery.ViewModels
 {
