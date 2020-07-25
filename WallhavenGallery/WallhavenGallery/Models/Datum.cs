@@ -1,10 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
-
+using WallhavenGallery.Models.Enums;
 
 namespace WallhavenGallery.Models
 {
-   public  class ImageModel
+    public class Datum
     {
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -25,10 +25,10 @@ namespace WallhavenGallery.Models
         public string Source { get; set; }
 
         [JsonProperty("purity")]
-        public string Purity { get; set; }
+        public Purity Purity { get; set; }
 
         [JsonProperty("category")]
-        public string Category { get; set; }
+        public Category Category { get; set; }
 
         [JsonProperty("dimension_x")]
         public long DimensionX { get; set; }
@@ -46,7 +46,7 @@ namespace WallhavenGallery.Models
         public long FileSize { get; set; }
 
         [JsonProperty("file_type")]
-        public string FileType { get; set; }
+        public FileType FileType { get; set; }
 
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
@@ -56,5 +56,8 @@ namespace WallhavenGallery.Models
 
         [JsonProperty("path")]
         public Uri Path { get; set; }
+
+        [JsonProperty("thumbs")]
+        public Thumbs Thumbs { get; set; }
     }
 }

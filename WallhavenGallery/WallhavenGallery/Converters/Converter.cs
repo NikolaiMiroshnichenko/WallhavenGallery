@@ -1,13 +1,10 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 
 namespace WallhavenGallery.Converters
 {
-    public static class Converter
+    internal static class Converter
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
@@ -15,9 +12,11 @@ namespace WallhavenGallery.Converters
             DateParseHandling = DateParseHandling.None,
             Converters =
             {
+                CategoryConverter.Singleton,
+                FileTypeConverter.Singleton,
+                PurityConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
     }
 }
-

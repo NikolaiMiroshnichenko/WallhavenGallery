@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace WallhavenGallery.Models
+﻿namespace WallhavenGallery.Models
 {
     public interface Entity
     {
-        int Id { get; set; }
+        string Id { get; set; }
     }
 }
