@@ -8,13 +8,13 @@ namespace WallhavenGallery.Services
 {
     public class RestApiClient : IRestApiClient
     {
-        private const string BaseUrl = "https://wallhaven.cc/api/v1/search?";
+        private const string BaseUrl = "https://wallhaven.cc/api/v1/search?resolutions=1024x768";
         private StringBuilder stringBuilder = new StringBuilder(BaseUrl);
         private readonly HttpClient _httpClient = new HttpClient();
 
         public async Task<ResponseModel> GetAsyncAll()
         {
-            var response = await _httpClient.GetAsync(stringBuilder.Append("apikey=mgUbMpAaSerVpVSog4w5aTUdSl0OLxGI").ToString());
+            var response = await _httpClient.GetAsync(BaseUrl);
             if (response.IsSuccessStatusCode)
             {
                 var imageModel = ResponseModel.FromJson(await response.Content.ReadAsStringAsync());
@@ -25,7 +25,7 @@ namespace WallhavenGallery.Services
 
         public async Task<ResponseModel> GetAsyncByCategory(string category)
         {
-            var response = await _httpClient.GetAsync(stringBuilder.Append("q="+category).ToString());
+            var response = await _httpClient.GetAsync(stringBuilder.Append("&q="+category).ToString());
             if (response.IsSuccessStatusCode)
             {
                 var imageModel = ResponseModel.FromJson(await response.Content.ReadAsStringAsync());

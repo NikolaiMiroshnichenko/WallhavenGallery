@@ -11,6 +11,7 @@ namespace WallhavenGallery.Models
         [JsonProperty("meta")]
         public Meta Meta { get; set; }
   
-        public static ResponseModel FromJson(string json) => JsonConvert.DeserializeObject<ResponseModel>(json, Converter.Settings);
+        public static ResponseModel FromJson(string json) => JsonConvert.DeserializeObject<ResponseModel>(json, 
+            Converter.Settings);
     }    
 }

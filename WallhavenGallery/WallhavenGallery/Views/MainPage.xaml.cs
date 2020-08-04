@@ -12,5 +12,17 @@ namespace WallhavenGallery
         {
             InitializeComponent();
         }
+
+        StackLayout stackLayout = new StackLayout()
+        {
+            BackgroundColor = Color.Yellow
+        };
+        
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+            await ViewModel.OnAppearing();
+            var source = Gallery.ItemsSource;
+        }
     }
 }

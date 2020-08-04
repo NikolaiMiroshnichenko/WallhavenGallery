@@ -12,7 +12,7 @@
 
     <StackLayout>
 
-        <Grid>
+        <Grid x:Name="HashtagsGreed">
             <Button Command="{Binding NatureCommand}"  Text="Nature" Grid.Column="0" Grid.Row="0" Padding="0,0,0,0"/>
             <Button Command="{Binding SpaceCommand}" Text="Space" Grid.Column="1" Grid.Row="0" Padding="0,0,0,0"/>
             <Button Command="{Binding TransportCommand}" Text="Transport" Grid.Column="2" Grid.Row="0" Padding="0,0,0,0"/>
@@ -24,15 +24,29 @@
             <Button Command="{Binding MoviesCommand}" Text="Movies"  Grid.Column="0" Grid.Row="2" Padding="0,0,0,0"/>
             <Button Command="{Binding FantasyCommand}" Text="Fantasy" Grid.Column="1" Grid.Row="2" Padding="0,0,0,0"/>
             <Button Command="{Binding SportCommand}" Text="Sport" Grid.Column="2" Grid.Row="2" Padding="0,0,0,0"/>
-            <Button Command="{Binding OtherCommand}" Text="Others" Grid.Column="3" Grid.Row="2" Padding="0,0,0,0"/>            
+            <Button Command="{Binding SearchCommand}" Text="Others" Grid.Column="3" Grid.Row="2" Padding="0,0,0,0"/>
         </Grid>
-
-        <Editor Placeholder="Write the tag here"/>
+        <Editor Placeholder="Enter tag here"
+                Binding="SearchText"/>
 
         <CollectionView BackgroundColor="Red"
-                        ItemsSource ="{Binding GalleryList, Mode=TwoWay}">            
+                        ItemsSource ="{Binding GalleryList}"
+                        x:Name="Gallery"                         
+                        >
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="2"
+                        HorizontalItemSpacing="2"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>                    
+                        <Image Source="{Binding Path=Path.AbsoluteUri}"
+                           HeightRequest="150"
+                           Aspect="Fill"/>                                      
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
-        
     </StackLayout>
 
 </ContentPage>
