@@ -1,5 +1,5 @@
 # WallhavenGallery
-Application is REST client for Wallhaven API. Allow user to get images by categories.
+Application is client for Wallhaven.cc REST API. Allow user to get images by categories.
 ## Architecture
 Apllication consists of 3 projects:
 
