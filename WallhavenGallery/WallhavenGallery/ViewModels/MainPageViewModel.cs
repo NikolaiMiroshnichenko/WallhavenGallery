@@ -25,7 +25,7 @@ namespace WallhavenGallery.ViewModels
             FantasyCommand = new Command(async () => await FantasyGet());
             SportCommand = new Command(async () => await SportGet());
             ArtsCommand = new Command(async () => await ArtsGet());
-            ByEditorCommand = new Command(async () => await ByEditorGet(SearchText));
+            ByEntryCommand = new Command(async () => await ByEntryGet(SearchText));
         }
         public ObservableCollection<Datum> GalleryList { get; set; } = new ObservableCollection<Datum>();
         public String SearchText { get; set; }
@@ -40,7 +40,7 @@ namespace WallhavenGallery.ViewModels
         public Command MoviesCommand { get; set; }
         public Command FantasyCommand { get; set; }
         public Command SportCommand { get; set; }
-        public Command ByEditorCommand { get; set; }
+        public Command ByEntryCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -133,7 +133,7 @@ namespace WallhavenGallery.ViewModels
             GalleryList.AddRange(responseModel.Data);
         }
 
-        public async Task ByEditorGet(string tag)
+        public async Task ByEntryGet(string tag)
         {
             if (tag!=null)
             {
@@ -141,8 +141,7 @@ namespace WallhavenGallery.ViewModels
                 var responseModel = await restApi.GetAsyncByCategory(tag);
                 GalleryList.Clear();
                 GalleryList.AddRange(responseModel.Data);
-            }              
-      
+            }    
         }
 
         public async Task OnAppearing()

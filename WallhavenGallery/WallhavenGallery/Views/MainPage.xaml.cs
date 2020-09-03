@@ -24,5 +24,10 @@ namespace WallhavenGallery
             await ViewModel.OnAppearing();
             var source = Gallery.ItemsSource;
         }
+
+        private void Entry_Completed(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

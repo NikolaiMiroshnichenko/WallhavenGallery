@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:behaviors="clr-namespace:WallhavenGallery.Behaviors"
              xmlns:viewmodels="clr-namespace:WallhavenGallery.ViewModels"
              mc:Ignorable="d"
              x:Class="WallhavenGallery.MainPage">
@@ -11,7 +12,7 @@
     </ContentPage.BindingContext>
 
     <StackLayout>
-
+        
         <Grid x:Name="HashtagsGreed">
             <Button Command="{Binding NatureCommand}"  Text="Nature" Grid.Column="0" Grid.Row="0" Padding="0,0,0,0"/>
             <Button Command="{Binding SpaceCommand}" Text="Space" Grid.Column="1" Grid.Row="0" Padding="0,0,0,0"/>
@@ -24,10 +25,15 @@
             <Button Command="{Binding MoviesCommand}" Text="Movies"  Grid.Column="0" Grid.Row="2" Padding="0,0,0,0"/>
             <Button Command="{Binding FantasyCommand}" Text="Fantasy" Grid.Column="1" Grid.Row="2" Padding="0,0,0,0"/>
             <Button Command="{Binding SportCommand}" Text="Sport" Grid.Column="2" Grid.Row="2" Padding="0,0,0,0"/>
-            <Button Command="{Binding SearchCommand}" Text="Others" Grid.Column="3" Grid.Row="2" Padding="0,0,0,0"/>
+            <Button Command="{Binding ByEditorCommand}" Text="Others" Grid.Column="3" Grid.Row="2" Padding="0,0,0,0"/>
         </Grid>
-        <Editor Placeholder="Enter tag here"
-                Binding="SearchText"/>
+
+        <Entry Text="{Binding SearchText, Mode=TwoWay}"
+               Placeholder="Enter tag here">
+        <Entry.Behaviors>
+            <behaviors:EventToCommandBehavior Command="{Binding ByEntryCommand}" />                
+            </Entry.Behaviors>
+        </Entry>
 
         <CollectionView BackgroundColor="Red"
                         ItemsSource ="{Binding GalleryList}"
